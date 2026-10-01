@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusTask - Pomodoro & Gerenciador de Tarefas</title>
+  
+  <!-- Fonte Google Fonts (Poppins) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Ícones Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Estilos Customizados -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <div class="app-container">
+    <!-- Cabeçalho -->
+    <header class="app-header">
+      <div class="logo">
+        <i class="fa-solid fa-brain"></i>
+        <span>FocusTask</span>
+      </div>
+      <button id="theme-toggle" class="btn-icon" aria-label="Alternar Tema">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </header>
+
+    <!-- Seção do Timer Pomodoro -->
+    <section class="pomodoro-card">
+      <div class="mode-selector">
+        <button class="mode-btn active" data-mode="pomodoro">Pomodoro</button>
+        <button class="mode-btn" data-mode="shortBreak">Pausa Curta</button>
+        <button class="mode-btn" data-mode="longBreak">Pausa Longa</button>
+      </div>
+
+      <div class="timer-display">
+        <span id="timer">25:00</span>
+      </div>
+
+      <div class="timer-controls">
+        <button id="start-btn" class="btn btn-primary">
+          <i class="fa-solid fa-play"></i> Iniciar
+        </button>
+        <button id="reset-btn" class="btn btn-secondary">
+          <i class="fa-solid fa-rotate-right"></i> Reiniciar
+        </button>
+      </div>
+    </section>
+
+    <!-- Seção do Gerenciador de Tarefas -->
+    <section class="tasks-card">
+      <h2><i class="fa-solid fa-list-check"></i> Minhas Tarefas</h2>
+      
+      <form id="task-form" class="task-input-container">
+        <input 
+          type="text" 
+          id="task-input" 
+          placeholder="O que você vai realizar hoje?" 
+          required 
+          autocomplete="off"
+        >
+        <button type="submit" class="btn btn-add">
+          <i class="fa-solid fa-plus"></i> Adicionar
+        </button>
+      </form>
+
+      <div class="task-filters">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="pending">Pendentes</button>
+        <button class="filter-btn" data-filter="completed">Concluídas</button>
+      </div>
+
+      <ul id="task-list" class="task-list">
+        <!-- As tarefas serão inseridas dinamicamente via JavaScript -->
+      </ul>
+
+      <footer class="tasks-footer">
+        <span id="task-count">0 tarefas pendentes</span>
+        <button id="clear-completed" class="btn-text">Limpar concluídas</button>
+      </footer>
+    </section>
+  </div>
+
+  <!-- Script JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
