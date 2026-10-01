@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FocusTask - Pomodoro & Gerenciador de Tarefas</title>
+  <title>CipherFlow - Codificador de Senhas & Passo a Passo</title>
   
-  <!-- Fonte Google Fonts (Poppins) -->
+  <!-- Fontes do Google (Poppins e Fira Code) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Ícones Font Awesome -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Estilos Customizados -->
@@ -18,75 +18,75 @@
 </head>
 <body>
 
-  <div class="app-container">
+  <div class="container">
     <!-- Cabeçalho -->
     <header class="app-header">
       <div class="logo">
-        <i class="fa-solid fa-brain"></i>
-        <span>FocusTask</span>
+        <i class="fa-solid fa-user-shield"></i>
+        <span>CipherFlow</span>
       </div>
       <button id="theme-toggle" class="btn-icon" aria-label="Alternar Tema">
         <i class="fa-solid fa-moon"></i>
       </button>
     </header>
 
-    <!-- Seção do Timer Pomodoro -->
-    <section class="pomodoro-card">
-      <div class="mode-selector">
-        <button class="mode-btn active" data-mode="pomodoro">Pomodoro</button>
-        <button class="mode-btn" data-mode="shortBreak">Pausa Curta</button>
-        <button class="mode-btn" data-mode="longBreak">Pausa Longa</button>
-      </div>
+    <!-- Formulário de Entrada -->
+    <main class="main-card">
+      <section class="input-section">
+        <label for="password-input">Digite sua senha ou código:</label>
+        <div class="input-wrapper">
+          <i class="fa-solid fa-key input-icon"></i>
+          <input 
+            type="text" 
+            id="password-input" 
+            placeholder="Ex: MinhaSenha123" 
+            autocomplete="off"
+            required
+          >
+          <button id="clear-btn" class="btn-clear" title="Limpar campo">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
 
-      <div class="timer-display">
-        <span id="timer">25:00</span>
-      </div>
+        <div class="algorithm-selector">
+          <label for="algo-select">Escolha o nível de codificação:</label>
+          <select id="algo-select">
+            <option value="basic">Básico (Inversão + Substituição Leet + Shift)</option>
+            <option value="medium">Intermediário (+ Base64 + Prefixo Hash)</option>
+            <option value="advanced">Avançado (+ Hexadecimal + Salt + Embaralhamento)</option>
+          </select>
+        </div>
 
-      <div class="timer-controls">
-        <button id="start-btn" class="btn btn-primary">
-          <i class="fa-solid fa-play"></i> Iniciar
+        <button id="encode-btn" class="btn btn-primary">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Codificar e Ver Passo a Passo
         </button>
-        <button id="reset-btn" class="btn btn-secondary">
-          <i class="fa-solid fa-rotate-right"></i> Reiniciar
-        </button>
-      </div>
-    </section>
+      </section>
 
-    <!-- Seção do Gerenciador de Tarefas -->
-    <section class="tasks-card">
-      <h2><i class="fa-solid fa-list-check"></i> Minhas Tarefas</h2>
-      
-      <form id="task-form" class="task-input-container">
-        <input 
-          type="text" 
-          id="task-input" 
-          placeholder="O que você vai realizar hoje?" 
-          required 
-          autocomplete="off"
-        >
-        <button type="submit" class="btn btn-add">
-          <i class="fa-solid fa-plus"></i> Adicionar
-        </button>
-      </form>
+      <!-- Resultado Final -->
+      <section id="result-section" class="result-section hidden">
+        <hr class="divider">
+        
+        <div class="final-output-card">
+          <span class="label">Senha Codificada Final:</span>
+          <div class="output-wrapper">
+            <code id="final-password">...</code>
+            <button id="copy-btn" class="btn-copy" title="Copiar código">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+        </div>
 
-      <div class="task-filters">
-        <button class="filter-btn active" data-filter="all">Todas</button>
-        <button class="filter-btn" data-filter="pending">Pendentes</button>
-        <button class="filter-btn" data-filter="completed">Concluídas</button>
-      </div>
-
-      <ul id="task-list" class="task-list">
-        <!-- As tarefas serão inseridas dinamicamente via JavaScript -->
-      </ul>
-
-      <footer class="tasks-footer">
-        <span id="task-count">0 tarefas pendentes</span>
-        <button id="clear-completed" class="btn-text">Limpar concluídas</button>
-      </footer>
-    </section>
+        <!-- Linha do Tempo do Passo a Passo -->
+        <div class="steps-container">
+          <h3><i class="fa-solid fa-route"></i> Passo a Passo da Transformação</h3>
+          <div id="steps-list" class="steps-list">
+            <!-- Os passos serão inseridos dinamicamente pelo JavaScript -->
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
 
-  <!-- Script JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
